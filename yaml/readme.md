@@ -35,6 +35,10 @@ This is the heart of the project. Although I'm not sure how many times this file
 Equipment, with manufacturer information, connector information, signal information, and pinouts will all live here. Many of the fields will only be allowed
 to be filled by references from the other databases. This is done to try to force the information to be clean. 
 
+What to include and what not to include? Primary goal of this is currently making functional drawings accurate and easy. This includes rack drawings and figuring out power usage. So - with that in mind, currently things that are needed for reference but don't affect functional block diagarms are excluded. This means output lumens of a lighting fixture or projector aren't relevant - however the video resolutions supported by a projector are. As well, DMX footprint size matters, but channel mapping doesnt. 
+
+
+
 I'm sure this will get more complicated as we go, but here's the start. 
 
 ```
@@ -57,6 +61,19 @@ equipment:
       rack_units : [# / NONE]
       votlage: [v]
       wattage: [w]
+     notes: [ Used for documenting quirks about using this device ]
+      
+    ### OPTIONAL ###
+    
+    - video:
+      -resolutions: [ Width x Height x Frame Rate ]
+     
+     - lighting:
+      - dmx_footprint: [ Number of Channels ]
+      
+     - audio:
+      - digital_audio_channels: [# of Dante or Madi or AES67 channels]
+      
        
 ```
 
